@@ -15,6 +15,7 @@ class Randmon : private Monitor{
 	public:
 		Randmon(){
 			int i;
+			//printf("inicjalizuje randmon \n");
 			for(i=0; i<N_CONSUMERS; ++i){
 				ready[i]=0;
 			}
@@ -23,6 +24,7 @@ class Randmon : private Monitor{
 		
 		int randMonitor(){
 			enter();
+			//printf("losowanko \n");
 			int number;
 			number=-1;
 			while(number==-1){

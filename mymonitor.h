@@ -14,10 +14,13 @@ class Mymonitor : private Monitor{
 		Condition full, empty;
 	
 	public:
-		Mymonitor(): head(0), tail(0), count(0) {}
+		Mymonitor(): head(0), tail(0), count(0) {
+			//printf("inicjalizuje mymon \n");
+		}
 		
 		void putItem(int item, int id){
 			enter();
+			//printf("wkladam \n");
 			if (count==SIZE) wait(full);
 			printf("Input %d , producer id %d \n", item, id);
 			buffer[tail]=item;
@@ -30,6 +33,7 @@ class Mymonitor : private Monitor{
 		}
 		void getItem(int id){
 			enter();
+			//printf("wyciagam \n");
 			if (count==0) wait(empty);
 			int item;
 			item=buffer[head];
