@@ -30,7 +30,7 @@ class Randmon : private Monitor{
 			int liczba;
 			number=-1;
 			while(number==-1){
-				number=(rand())%5;
+				number=(rand())%N_CONSUMERS;
 				liczba=tablica[number].getCircaCount();
 				printf("producent nr %d losuje, jest ok %d w kolejce %d \n",nr, liczba, number);
 				if (ready[number]==0 && liczba!=10){

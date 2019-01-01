@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <ctime>
 #define N_PRODUCERS 3
 
 using namespace std;
@@ -59,6 +60,7 @@ int main(int argv, char * argc[]){
 	pthread_t producer[N_PRODUCERS];
 	printf("WITAM \n");
 	int result;
+	srand(time(NULL));
 	int i;
 	for(i=0; i<N_CONSUMERS; i++){
 		result=pthread_create(&consumer[i], NULL, f_consumer, (void *)i);
