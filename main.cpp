@@ -1,4 +1,4 @@
-#include "mymonitor.h"
+//#include "mymonitor.h"
 #include "randmon.h"
 #include <pthread.h> 
 #include <stdio.h>
@@ -10,8 +10,8 @@ using namespace std;
 
 Mymonitor queues[N_CONSUMERS];
 Randmon randmon; 
-int sleep_time_consumer[N_CONSUMERS]={10, 10,10,10, 10};
-int sleep_time_producer[N_PRODUCERS]={1, 1, 1};
+int sleep_time_consumer[N_CONSUMERS]={3, 3,3,2, 2};
+int sleep_time_producer[N_PRODUCERS]={2, 1 ,5};
 
 void *f_consumer(void *nr){ //od 0 do 4 nr
 	long number1;
@@ -43,7 +43,7 @@ void *f_producer(void *nr){ //od 0 do 2 nr
 	int quenr;
 	//printf("Producent %d\n", (int)number);
 	while(1){
-		quenr=randmon.randMonitor();
+		quenr=randmon.randMonitor(queues, number);
 		queues[quenr].putItem(num2put, number);
 		randmon.done(quenr);
 		num2put++;

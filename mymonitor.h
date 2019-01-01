@@ -18,6 +18,11 @@ class Mymonitor : private Monitor{
 			//printf("inicjalizuje mymon \n");
 		}
 		
+		int getCircaCount(){
+			return count;
+		}
+
+
 		void putItem(int item, int id){
 			enter();
 			//printf("wkladam \n");

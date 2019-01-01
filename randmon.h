@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "mymonitor.h"
 
 
 #define N_CONSUMERS 5
@@ -22,14 +23,17 @@ class Randmon : private Monitor{
 			srand(time(NULL));
 		}
 		
-		int randMonitor(){
+		int randMonitor(Mymonitor tablica[], int nr){
 			enter();
 			//printf("losowanko \n");
 			int number;
+			int liczba;
 			number=-1;
 			while(number==-1){
 				number=(rand())%5;
-				if (ready[number]==0){
+				liczba=tablica[number].getCircaCount();
+				printf("producent nr %d losuje, jest ok %d w kolejce %d \n",nr, liczba, number);
+				if (ready[number]==0 && liczba!=10){
 					ready[number]=1;
 				}
 				else {
@@ -42,9 +46,9 @@ class Randmon : private Monitor{
 
 		
 		void done(int number){
-			enter();
+			//enter();
 			ready[number]=0;
-			leave();
+			//leave();
 
 		}
 
